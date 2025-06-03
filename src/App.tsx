@@ -4,7 +4,9 @@
 // import ArrowFunctionalComponentWithProps from "./components/ArrowFunctionalComponentWithProps.tsx";
 // import ArrowFunctionalComponentWithPropsType from "./components/ArrowFunctionalComponentWithPropsType.tsx";
 import Layout from "./components/Layout.tsx";
-import Todo from "./components/Todo/Todo.tsx";
+// import Todo from "./components/Todo/Todo.tsx";
+import { useEffect } from "react";
+import {NameChanger} from "./components/NameChanger.tsx";
 // import ClassComponentWithState from "./components/ClassComponentWithState.tsx";
 // import FunctionalComponentWithState from "./components/FunctionalComponentWithState.tsx";
 // import Counter from "./components/Counter.tsx";
@@ -16,6 +18,11 @@ import Todo from "./components/Todo/Todo.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 
 function App() {
+
+    useEffect( () => {
+        const id: number = setInterval( () => console.log( " tick "), 1000 );
+        return () => clearInterval(id);
+    }, []);
 
     return (
         <>
@@ -38,7 +45,8 @@ function App() {
                 {/*<CounterWithCustomHook/>*/}
                 {/*<CounterAdvancedWithCustomHook/>*/}
                 {/*<CounterWithReducer/>*/}
-                <Todo/>
+                {/*<Todo/>*/}
+                <NameChanger/>
 
 
             </Layout>

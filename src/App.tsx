@@ -3,7 +3,7 @@
 // import ArrowFunctionalComponent from "./components/ArrowFunctionalComponent.tsx";
 // import ArrowFunctionalComponentWithProps from "./components/ArrowFunctionalComponentWithProps.tsx";
 // import ArrowFunctionalComponentWithPropsType from "./components/ArrowFunctionalComponentWithPropsType.tsx";
-import Layout from "./components/Layout.tsx";
+// import Layout from "./components/Layout.tsx";
 // import OnlineStatus from "./components/OnlineStatus.tsx";
 // import Todo from "./components/Todo/Todo.tsx";
 // import { useEffect } from "react";
@@ -22,6 +22,11 @@ import {BrowserRouter, Routes, Route} from "react-router";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
+import RouterLayout from "./components/RouterLayout.tsx";
+import ExamplesPage from "./pages/ExamplesPage.tsx";
+import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
+import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 function App() {
 
@@ -54,14 +59,28 @@ function App() {
                 {/*<Todo/>*/}
                 {/*<OnlineStatus/>*/}
             <BrowserRouter>
-                <Layout>
                     <Routes>
-                        <Route index element={<HomePage/>}/>
-                        <Route path="name-changer" element={<NameChangerPage/>} ></Route>
-                        <Route path="online-status" element={<OnlineStatusPage/>} ></Route>
+
+                        <Route element= { <RouterLayout/> }>
+                            {/*<Route path="/" element={ <HomePage/> } ></Route>*/}
+                            <Route index element={<HomePage/>}/>
+                        </Route>
+
+                        {/*<Route path="examples?">*/}
+                        <Route path="examples" element= { <RouterExamplesLayout/> } >
+                            <Route index element={ <ExamplesPage/> }/>
+
+                            <Route path="name-changer" element={<NameChangerPage/>} ></Route>
+                            <Route path="online-status" element={<OnlineStatusPage/>} ></Route>
+                            <Route path="auto-redirect" element={<AutoRedirectPage/>} ></Route>
+                        </Route>
+
+                        <Route path="users/:userId" element= {<UserPage/>} > </Route>
+                        <Route path="users" element={ <UserPage/> } > </Route>
+                        {/*<Route path="files/*" element={ <FilePage/> } > </Route>*/}
+                        <Route path="*" element={<NotFoundPage/> }></Route>
+
                     </Routes>
-                    <Route path="users/:userId" element= {<UserPage/>} > </Route>
-                </Layout>
             </BrowserRouter>
 
             {/*</Layout>*/}

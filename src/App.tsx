@@ -17,7 +17,7 @@
 // import {CounterWithCustomHook} from "./components/CounterWithCustomHook.tsx";
 // import CounterAdvancedWithCustomHook from "./components/CounterAdvancedWithCustomHook.tsx";
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
-import HomePage from "./pages/HomePage.tsx";
+// import HomePage from "./pages/HomePage.tsx";
 import {BrowserRouter, Routes, Route} from "react-router";
 import NameChangerPage from "./pages/NameChangerPage.tsx";
 import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
@@ -27,6 +27,8 @@ import ExamplesPage from "./pages/ExamplesPage.tsx";
 import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
 import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+// import FocusInput from "./components/FocusInput.tsx";
+import UnControlledInput from "./components/UnControlledInput.tsx";
 
 function App() {
 
@@ -63,7 +65,7 @@ function App() {
 
                         <Route element= { <RouterLayout/> }>
                             {/*<Route path="/" element={ <HomePage/> } ></Route>*/}
-                            <Route index element={<HomePage/>}/>
+                            <Route index element={<UnControlledInput/>}/>
                         </Route>
 
                         {/*<Route path="examples?">*/}
@@ -78,6 +80,9 @@ function App() {
                         <Route path="users/:userId" element= {<UserPage/>} > </Route>
                         <Route path="users" element={ <UserPage/> } > </Route>
                         {/*<Route path="files/*" element={ <FilePage/> } > </Route>*/}
+
+
+
                         <Route path="*" element={<NotFoundPage/> }></Route>
 
                     </Routes>

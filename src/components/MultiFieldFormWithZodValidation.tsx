@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button"
 import {useState} from "react";
 import {z} from "zod";
 
@@ -139,6 +140,7 @@ const MultiFieldFormWithZodValidation = () => {
                             className="bg-gray-200 text-cf-gray-700 px-4 py-2 rounded">
                             Clear
                         </button>
+                        <Button>Click me</Button>
                     </div>
                 </form>
                 { submittedData && (

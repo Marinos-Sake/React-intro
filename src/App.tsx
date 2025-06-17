@@ -19,19 +19,22 @@
 // import CounterWithReducer from "./components/CounterWithReducer.tsx";
 // import HomePage from "./pages/HomePage.tsx";
 import {BrowserRouter, Routes, Route} from "react-router";
-import NameChangerPage from "./pages/NameChangerPage.tsx";
-import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
-import UserPage from "./pages/UserPage.tsx";
-import RouterLayout from "./components/RouterLayout.tsx";
-import ExamplesPage from "./pages/ExamplesPage.tsx";
-import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
-import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
+// import NameChangerPage from "./pages/NameChangerPage.tsx";
+// import OnlineStatusPage from "./pages/OnlineStatusPage.tsx";
+// import UserPage from "./pages/UserPage.tsx";
+// import RouterLayout from "./components/RouterLayout.tsx";
+// import ExamplesPage from "./pages/ExamplesPage.tsx";
+// import RouterExamplesLayout from "./components/RouterExamplesLayout.tsx";
+// import AutoRedirectPage from "./pages/AutoRedirectPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
+import RouterLayout from "@/components/RouterLayout.tsx";
+import ProductList from "@/pages/ProductList.tsx";
+import Product from "@/pages/ProductList.tsx";
 // import FocusInput from "./components/FocusInput.tsx";
 // import UnControlledInput from "./components/UnControlledInput.tsx";
 // import MultiFieldForm from "./components/MultiFieldForm.tsx";
 // import MultiFieldFormWithValidation from "./components/MultiFieldFormWithValidation.tsx";
-import MultiFieldFormWithZodValidation from "./components/MultiFieldFormWithZodValidation.tsx";
+// import MultiFieldFormWithZodValidation from "./components/MultiFieldFormWithZodValidation.tsx";
 
 function App() {
 
@@ -66,27 +69,33 @@ function App() {
             <BrowserRouter>
                     <Routes>
 
-                        <Route element= { <RouterLayout/> }>
+                        {/*<Route element= { <RouterLayout/> }>*/}
                             {/*<Route path="/" element={ <HomePage/> } ></Route>*/}
-                            <Route index element={<MultiFieldFormWithZodValidation/>}/>
-                        </Route>
+                            {/*<Route index element={<MultiFieldFormWithZodValidation/>}/>*/}
+                        {/*</Route>*/}
 
                         {/*<Route path="examples?">*/}
-                        <Route path="examples" element= { <RouterExamplesLayout/> } >
-                            <Route index element={ <ExamplesPage/> }/>
+                        {/*<Route path="examples" element= { <RouterExamplesLayout/> } >*/}
+                        {/*    <Route index element={ <ExamplesPage/> }/>*/}
 
-                            <Route path="name-changer" element={<NameChangerPage/>} ></Route>
-                            <Route path="online-status" element={<OnlineStatusPage/>} ></Route>
-                            <Route path="auto-redirect" element={<AutoRedirectPage/>} ></Route>
-                        </Route>
+                        {/*    <Route path="name-changer" element={<NameChangerPage/>} ></Route>*/}
+                        {/*    <Route path="online-status" element={<OnlineStatusPage/>} ></Route>*/}
+                        {/*    <Route path="auto-redirect" element={<AutoRedirectPage/>} ></Route>*/}
+                        {/*</Route>*/}
 
-                        <Route path="users/:userId" element= {<UserPage/>} > </Route>
-                        <Route path="users" element={ <UserPage/> } > </Route>
+                        {/*<Route path="users/:userId" element= {<UserPage/>} > </Route>*/}
+                        {/*<Route path="users" element={ <UserPage/> } > </Route>*/}
                         {/*<Route path="files/*" element={ <FilePage/> } > </Route>*/}
-
+                        <Route path="products" element={<RouterLayout/>} >
+                            <Route index element={<ProductList/>} />
+                            <Route path="new" element={<Product/>}/>
+                            {/*<Route path=":productId" element={<Product/>}/>*/}
+                        </Route>
 
 
                         <Route path="*" element={<NotFoundPage/> }></Route>
+
+
 
                     </Routes>
             </BrowserRouter>

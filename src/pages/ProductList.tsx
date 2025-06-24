@@ -8,7 +8,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import type {Product} from "@/api/products.ts";
+import type {ProductType} from "@/api/products.ts";
 import {getProducts} from "@/api/products.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {useNavigate} from "react-router";
@@ -18,7 +18,7 @@ import {toast} from "sonner";
 
 const ProductList = () => {
 
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<ProductType[]>([]);
     const [loading, setLoading] = useState(true); // true--> φορτώνει η λίστα(σημαδακι Loading)
     const [deleting, setDeleting] = useState<number | null>(null);
 

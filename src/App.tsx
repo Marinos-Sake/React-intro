@@ -29,7 +29,7 @@ import {BrowserRouter, Routes, Route} from "react-router";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import RouterLayout from "@/components/RouterLayout.tsx";
 import ProductList from "@/pages/ProductList.tsx";
-import Product from "@/pages/ProductList.tsx";
+import Product from "@/pages/Product.tsx";
 // import FocusInput from "./components/FocusInput.tsx";
 // import UnControlledInput from "./components/UnControlledInput.tsx";
 // import MultiFieldForm from "./components/MultiFieldForm.tsx";
@@ -86,10 +86,10 @@ function App() {
                         {/*<Route path="users/:userId" element= {<UserPage/>} > </Route>*/}
                         {/*<Route path="users" element={ <UserPage/> } > </Route>*/}
                         {/*<Route path="files/*" element={ <FilePage/> } > </Route>*/}
-                        <Route path="products" element={<RouterLayout/>} >
-                            <Route index element={<ProductList/>} />
-                            <Route path="new" element={<Product/>}/>
-                            {/*<Route path=":productId" element={<Product/>}/>*/}
+                        <Route path="products" element={<RouterLayout />}>
+                            <Route index element={<ProductList />}/>
+                            <Route path="new" element={<Product mode="create" />}/>
+                            <Route path=":productId" element={<Product mode="edit" />}/>
                         </Route>
 
 

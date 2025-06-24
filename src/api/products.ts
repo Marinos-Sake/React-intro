@@ -1,5 +1,6 @@
 import {z} from "zod";
 
+
 const API_URL: string = import.meta.env.VITE_API_URL;
 const TENANT_ID: string = import.meta.env.VITE_TENANT_ID;
 
@@ -18,7 +19,9 @@ export const  productSchema = z.object({
     category_id: z.coerce.number().int().min(1, "Category is required"),
 })
 
-export type Product = z.infer<typeof productSchema>;
+export const productFormSchema = productSchema.omit({ id: true });
+
+export type ProductType = z.infer<typeof productSchema>;
 
 
 // export type Product = {
@@ -34,14 +37,14 @@ export type Product = z.infer<typeof productSchema>;
 //     category_id: number,
 // }
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts(): Promise<ProductType[]> {
     const response = await fetch(`${API_URL}tenants/${TENANT_ID}/products/`);
     if (!response.ok)  throw new Error(response.statusText);
     console.log(response.body);
     return await response.json();
 }
 
-export async function getProductById(id: string): Promise<Product> {
+export async function getProductById(id: number): Promise<ProductType> {
     const response = await fetch(`${API_URL}tenants/${TENANT_ID}/products/${id}`);
     if (!response.ok) throw new Error(response.statusText);
     console.log(response.body);
@@ -58,7 +61,7 @@ export async function updateProduct(id: number, data:{
     is_favorite: boolean;
     category_id: number;
     sort: number;
-    }): Promise<Product> {
+    }): Promise<ProductType> {
     const response = await fetch(`${API_URL}tenants/${TENANT_ID}/products/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -74,5 +77,16 @@ export async function deleteProduct(id: number): Promise<void> {
     });
     if (!response.ok)  throw new Error(response.statusText);
     console.log(response.body);
+    return await response.json();
+}
+
+export async function createProduct(
+    data: Omit<ProductType, "id">
+): Promise<ProductType> {
+    const response = await fetch(`${API_URL}tenants/${TENANT_ID}/products/`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+    });
+    if (!response.ok)  throw new Error(response.statusText);
     return await response.json();
 }
